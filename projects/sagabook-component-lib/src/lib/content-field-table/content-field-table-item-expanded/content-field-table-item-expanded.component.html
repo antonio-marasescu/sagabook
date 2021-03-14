@@ -1,0 +1,14 @@
+<td [attr.colspan]="colSpan">
+  <mat-grid-list [cols]="colSpan" rowHeight="100px">
+    <mat-grid-tile
+      *ngFor="let field of fields">
+      <div class="text-tile">
+        <div><strong>{{field.key}}</strong></div>
+        <br>
+        <div>
+          {{field.value}}
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</td>

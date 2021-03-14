@@ -1,0 +1,37 @@
+<table class="field-table" [cellSpacing]="0">
+  <thead>
+  <tr>
+    <th *ngIf="config?.selectable">
+      <mat-toolbar color="primary" class="field-table-header">
+        <mat-checkbox class="header-checkbox" [checked]="selectAll" (change)="onSelectAll($event)"></mat-checkbox>
+      </mat-toolbar>
+    </th>
+    <th *ngFor="let header of dataSource.headers">
+      <mat-toolbar color="primary" class="field-table-header">{{header}}</mat-toolbar>
+    </th>
+    <th *ngIf="config?.expandable">
+      <mat-toolbar color="primary" class="field-table-header"></mat-toolbar>
+    </th>
+  </tr>
+  </thead>
+  <tbody *ngIf="dataSource">
+  <ng-container *ngFor="let row of dataSource.rows">
+    <tr sb-content-field-table-item
+        [config]="config"
+        [dataSource]="row"
+        [selected]="row.selected"
+        [expanded]="row.expanded"
+        (valueChanges)="valueChanges.emit($event)"
+        (rowSelected)="rowSelected.emit($event)"
+        (rowExpanded)="onRowExpanded($event)"
+    ></tr>
+    <tr sb-content-field-table-item-expanded
+        *ngIf="config.expandable && row.expanded"
+        [colSpan]="getExpandedCollspan()"
+        [fields]="row.expandedFields"
+    >
+    </tr>
+  </ng-container>
+  </tbody>
+</table>
+

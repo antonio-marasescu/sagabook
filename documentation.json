@@ -1,0 +1,1258 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "ContentField",
+            "id": "interface-ContentField-53aba70e6391fcaedf68749942a7d72a",
+            "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.interface.ts",
+            "type": "interface",
+            "sourceCode": "import {FormGroup} from '@angular/forms';\r\nimport {ExpandedContentField} from '../content-field-table-item-expanded/content-field-table-item-expanded.interface';\r\n\r\nexport enum ContentFieldType {\r\n  FormField = 'FormField',\r\n  TextField = 'TextField'\r\n}\r\n\r\nexport type ReadonlyFieldType = ContentFieldType.TextField;\r\n\r\nexport interface ContentField {\r\n  key: string | number;\r\n  displayLabel?: string;\r\n  value?: any; // value for non-form fields\r\n  type: ContentFieldType;\r\n}\r\n\r\nexport interface ContentFieldRow {\r\n  key: string;\r\n  selected?: boolean;\r\n  expanded?: boolean;\r\n  form: FormGroup;\r\n  fields: ContentField[];\r\n  expandedFields?: ExpandedContentField[];\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "displayLabel",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "key",
+                    "type": "string | number",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "type",
+                    "type": "ContentFieldType",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "value",
+                    "type": "any",
+                    "optional": true,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "ContentFieldConfig",
+            "id": "interface-ContentFieldConfig-f9ccbd582e837db2265d64a98690b936",
+            "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.config.ts",
+            "type": "interface",
+            "sourceCode": "export interface ContentFieldConfig {\r\n  selectable: boolean;\r\n  expandable: boolean;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "expandable",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "selectable",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "ContentFieldRow",
+            "id": "interface-ContentFieldRow-53aba70e6391fcaedf68749942a7d72a",
+            "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.interface.ts",
+            "type": "interface",
+            "sourceCode": "import {FormGroup} from '@angular/forms';\r\nimport {ExpandedContentField} from '../content-field-table-item-expanded/content-field-table-item-expanded.interface';\r\n\r\nexport enum ContentFieldType {\r\n  FormField = 'FormField',\r\n  TextField = 'TextField'\r\n}\r\n\r\nexport type ReadonlyFieldType = ContentFieldType.TextField;\r\n\r\nexport interface ContentField {\r\n  key: string | number;\r\n  displayLabel?: string;\r\n  value?: any; // value for non-form fields\r\n  type: ContentFieldType;\r\n}\r\n\r\nexport interface ContentFieldRow {\r\n  key: string;\r\n  selected?: boolean;\r\n  expanded?: boolean;\r\n  form: FormGroup;\r\n  fields: ContentField[];\r\n  expandedFields?: ExpandedContentField[];\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "expanded",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "expandedFields",
+                    "type": "ExpandedContentField[]",
+                    "optional": true,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "fields",
+                    "type": "ContentField[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "form",
+                    "type": "FormGroup",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "key",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "selected",
+                    "type": "boolean",
+                    "optional": true,
+                    "description": "",
+                    "line": 20
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "ContentFieldRowChangeEvent",
+            "id": "interface-ContentFieldRowChangeEvent-6cf4369be6570418e73b67cea42ea650",
+            "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+            "type": "interface",
+            "sourceCode": "import {FormGroup} from '@angular/forms';\r\n\r\nexport interface ContentFieldRowChangeEvent {\r\n  key: string;\r\n  value: FormGroup;\r\n}\r\n\r\nexport interface ContentFieldRowSelectedEvent {\r\n  key: string;\r\n  selected: boolean;\r\n}\r\n\r\nexport interface ContentFieldRowExpandedEvent {\r\n  key: string;\r\n  expanded: boolean;\r\n}\r\n\r\nexport function mapToChangeEvent(key: string, value: any): ContentFieldRowChangeEvent {\r\n  return {\r\n    key,\r\n    value\r\n  };\r\n}\r\n\r\nexport function mapToSelectedEvent(key: string, selected: any): ContentFieldRowSelectedEvent {\r\n  return {\r\n    key,\r\n    selected\r\n  };\r\n}\r\n\r\nexport function mapToExpandedEvent(key: string, expanded: any): ContentFieldRowExpandedEvent {\r\n  return {\r\n    key,\r\n    expanded\r\n  };\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "key",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "value",
+                    "type": "FormGroup",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "ContentFieldRowExpandedEvent",
+            "id": "interface-ContentFieldRowExpandedEvent-6cf4369be6570418e73b67cea42ea650",
+            "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+            "type": "interface",
+            "sourceCode": "import {FormGroup} from '@angular/forms';\r\n\r\nexport interface ContentFieldRowChangeEvent {\r\n  key: string;\r\n  value: FormGroup;\r\n}\r\n\r\nexport interface ContentFieldRowSelectedEvent {\r\n  key: string;\r\n  selected: boolean;\r\n}\r\n\r\nexport interface ContentFieldRowExpandedEvent {\r\n  key: string;\r\n  expanded: boolean;\r\n}\r\n\r\nexport function mapToChangeEvent(key: string, value: any): ContentFieldRowChangeEvent {\r\n  return {\r\n    key,\r\n    value\r\n  };\r\n}\r\n\r\nexport function mapToSelectedEvent(key: string, selected: any): ContentFieldRowSelectedEvent {\r\n  return {\r\n    key,\r\n    selected\r\n  };\r\n}\r\n\r\nexport function mapToExpandedEvent(key: string, expanded: any): ContentFieldRowExpandedEvent {\r\n  return {\r\n    key,\r\n    expanded\r\n  };\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "expanded",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "key",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "ContentFieldRowSelectedEvent",
+            "id": "interface-ContentFieldRowSelectedEvent-6cf4369be6570418e73b67cea42ea650",
+            "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+            "type": "interface",
+            "sourceCode": "import {FormGroup} from '@angular/forms';\r\n\r\nexport interface ContentFieldRowChangeEvent {\r\n  key: string;\r\n  value: FormGroup;\r\n}\r\n\r\nexport interface ContentFieldRowSelectedEvent {\r\n  key: string;\r\n  selected: boolean;\r\n}\r\n\r\nexport interface ContentFieldRowExpandedEvent {\r\n  key: string;\r\n  expanded: boolean;\r\n}\r\n\r\nexport function mapToChangeEvent(key: string, value: any): ContentFieldRowChangeEvent {\r\n  return {\r\n    key,\r\n    value\r\n  };\r\n}\r\n\r\nexport function mapToSelectedEvent(key: string, selected: any): ContentFieldRowSelectedEvent {\r\n  return {\r\n    key,\r\n    selected\r\n  };\r\n}\r\n\r\nexport function mapToExpandedEvent(key: string, expanded: any): ContentFieldRowExpandedEvent {\r\n  return {\r\n    key,\r\n    expanded\r\n  };\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "key",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "selected",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "ContentFieldTable",
+            "id": "interface-ContentFieldTable-b298bb4a2cc9e7dcc5dd24df09c6946f",
+            "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-format.interface.ts",
+            "type": "interface",
+            "sourceCode": "import {ContentFieldRow} from './content-field-table-item/content-field-table-item.interface';\r\n\r\nexport interface ContentFieldTable {\r\n  headers: string[];\r\n  rows: ContentFieldRow[];\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "headers",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "rows",
+                    "type": "ContentFieldRow[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "ExpandedContentField",
+            "id": "interface-ExpandedContentField-440fed65bb9c94c54f2f7ab7f220460d",
+            "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item-expanded/content-field-table-item-expanded.interface.ts",
+            "type": "interface",
+            "sourceCode": "export interface ExpandedContentField {\r\n  key: string | number;\r\n  value?: any;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "key",
+                    "type": "string | number",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "value",
+                    "type": "any",
+                    "optional": true,
+                    "description": "",
+                    "line": 3
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        }
+    ],
+    "injectables": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "ContentFieldTableComponent",
+            "id": "component-ContentFieldTableComponent-f2020a297fce6360b565941a35766732",
+            "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "sb-content-field-table",
+            "styleUrls": [
+                "content-field-table.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "content-field-table.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "config",
+                    "line": 19,
+                    "type": "ContentFieldConfig"
+                },
+                {
+                    "name": "dataSource",
+                    "line": 20,
+                    "type": "ContentFieldTable"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "rowExpanded",
+                    "defaultValue": "new EventEmitter<ContentFieldRowExpandedEvent>()",
+                    "line": 23,
+                    "type": "EventEmitter<ContentFieldRowExpandedEvent>"
+                },
+                {
+                    "name": "rowSelected",
+                    "defaultValue": "new EventEmitter<ContentFieldRowSelectedEvent>()",
+                    "line": 22,
+                    "type": "EventEmitter<ContentFieldRowSelectedEvent>"
+                },
+                {
+                    "name": "valueChanges",
+                    "defaultValue": "new EventEmitter<ContentFieldRowChangeEvent>()",
+                    "line": 21,
+                    "type": "EventEmitter<ContentFieldRowChangeEvent>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "selectAll",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getExpandedCollspan",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 30
+                },
+                {
+                    "name": "onRowExpanded",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "ContentFieldRowExpandedEvent"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "ContentFieldRowExpandedEvent",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onSelectAll",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "MatCheckboxChange"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "MatCheckboxChange",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output} from '@angular/core';\r\nimport {ContentFieldTable} from './content-field-table-format.interface';\r\nimport {ContentFieldConfig} from './content-field-table-item/content-field-table-item.config';\r\nimport {\r\n  ContentFieldRowChangeEvent,\r\n  ContentFieldRowExpandedEvent,\r\n  ContentFieldRowSelectedEvent,\r\n  mapToSelectedEvent\r\n} from './content-field-table-item/content-field-table-item.events';\r\nimport {MatCheckboxChange} from '@angular/material/checkbox';\r\n\r\n@Component({\r\n  selector: 'sb-content-field-table',\r\n  templateUrl: 'content-field-table.component.html',\r\n  styleUrls: ['content-field-table.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class ContentFieldTableComponent {\r\n  @Input() config: ContentFieldConfig;\r\n  @Input() dataSource: ContentFieldTable;\r\n  @Output() valueChanges: EventEmitter<ContentFieldRowChangeEvent> = new EventEmitter<ContentFieldRowChangeEvent>();\r\n  @Output() rowSelected: EventEmitter<ContentFieldRowSelectedEvent> = new EventEmitter<ContentFieldRowSelectedEvent>();\r\n  @Output() rowExpanded: EventEmitter<ContentFieldRowExpandedEvent> = new EventEmitter<ContentFieldRowExpandedEvent>();\r\n\r\n  selectAll = false;\r\n\r\n  constructor(private changeDetectorRef: ChangeDetectorRef) {\r\n  }\r\n\r\n  getExpandedCollspan(): number {\r\n    return this.dataSource.headers.length + (this.config.expandable ? 1 : 0) + (this.config.selectable ? 1 : 0);\r\n  }\r\n\r\n  onSelectAll(value: MatCheckboxChange): void {\r\n    this.selectAll = value.checked;\r\n    if (this.dataSource?.rows) {\r\n      this.dataSource.rows = this.dataSource.rows.map(r => ({...r, selected: this.selectAll}));\r\n      this.dataSource.rows.forEach(row => {\r\n        this.rowSelected.emit(mapToSelectedEvent(row.key, row.selected));\r\n      });\r\n      this.changeDetectorRef.markForCheck();\r\n    }\r\n  }\r\n\r\n  onRowExpanded(event: ContentFieldRowExpandedEvent): void {\r\n    const eventRow = this.dataSource.rows.find(r => r.key === event.key);\r\n    eventRow.expanded = event.expanded;\r\n    this.rowExpanded.emit(event);\r\n    this.changeDetectorRef.markForCheck();\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".field-table {\r\n  border-radius: 0;\r\n  padding: 0;\r\n}\r\n\r\n.field-table-header {\r\n  padding-left: 8px;\r\n  text-align: center;\r\n  justify-content: center;\r\n}\r\n\r\ntable td, table th\r\n{\r\n  padding: 0;\r\n}\r\n",
+                    "styleUrl": "content-field-table.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "changeDetectorRef",
+                        "type": "ChangeDetectorRef"
+                    }
+                ],
+                "line": 25,
+                "jsdoctags": [
+                    {
+                        "name": "changeDetectorRef",
+                        "type": "ChangeDetectorRef",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<table class=\"field-table\" [cellSpacing]=\"0\">\r\n  <thead>\r\n  <tr>\r\n    <th *ngIf=\"config?.selectable\">\r\n      <mat-toolbar color=\"primary\" class=\"field-table-header\">\r\n        <mat-checkbox style=\"padding-left: 12px\" [checked]=\"selectAll\" (change)=\"onSelectAll($event)\"></mat-checkbox>\r\n      </mat-toolbar>\r\n    </th>\r\n    <th *ngFor=\"let header of dataSource.headers\">\r\n      <mat-toolbar color=\"primary\" class=\"field-table-header\">{{header}}</mat-toolbar>\r\n    </th>\r\n    <th *ngIf=\"config?.expandable\">\r\n      <mat-toolbar color=\"primary\" class=\"field-table-header\"></mat-toolbar>\r\n    </th>\r\n  </tr>\r\n  </thead>\r\n  <tbody *ngIf=\"dataSource\">\r\n  <ng-container *ngFor=\"let row of dataSource.rows\">\r\n    <tr sb-content-field-table-item\r\n        [config]=\"config\"\r\n        [dataSource]=\"row\"\r\n        [selected]=\"row.selected\"\r\n        [expanded]=\"row.expanded\"\r\n        (valueChanges)=\"valueChanges.emit($event)\"\r\n        (rowSelected)=\"rowSelected.emit($event)\"\r\n        (rowExpanded)=\"onRowExpanded($event)\"\r\n    ></tr>\r\n    <tr sb-content-field-table-item-expanded\r\n        *ngIf=\"row.expanded\"\r\n        [colSpan]=\"getExpandedCollspan()\"\r\n        [fields]=\"row.expandedFields\"\r\n    >\r\n    </tr>\r\n  </ng-container>\r\n  </tbody>\r\n</table>\r\n\r\n"
+        },
+        {
+            "name": "ContentFieldTableItemComponent",
+            "id": "component-ContentFieldTableItemComponent-823ae289a8fda881e43c2ea2463519de",
+            "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "[sb-content-field-table-item]",
+            "styleUrls": [
+                "content-field-table-item.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "content-field-table-item.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "config",
+                    "line": 27,
+                    "type": "ContentFieldConfig"
+                },
+                {
+                    "name": "dataSource",
+                    "line": 28,
+                    "type": "ContentFieldRow"
+                },
+                {
+                    "name": "expanded",
+                    "line": 30,
+                    "type": "boolean"
+                },
+                {
+                    "name": "selected",
+                    "line": 29,
+                    "type": "boolean"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "rowExpanded",
+                    "defaultValue": "new EventEmitter<ContentFieldRowExpandedEvent>()",
+                    "line": 33,
+                    "type": "EventEmitter<ContentFieldRowExpandedEvent>"
+                },
+                {
+                    "name": "rowSelected",
+                    "defaultValue": "new EventEmitter<ContentFieldRowSelectedEvent>()",
+                    "line": 32,
+                    "type": "EventEmitter<ContentFieldRowSelectedEvent>"
+                },
+                {
+                    "name": "valueChanges",
+                    "defaultValue": "new EventEmitter<ContentFieldRowChangeEvent>()",
+                    "line": 31,
+                    "type": "EventEmitter<ContentFieldRowChangeEvent>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "destroyed$",
+                    "defaultValue": "new ReplaySubject(1)",
+                    "type": "ReplaySubject<boolean>",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "fieldTypes",
+                    "defaultValue": "{FormField: ContentFieldType.FormField, TextField: ContentFieldType.TextField}",
+                    "type": "object",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "valueChangeSubscription",
+                    "defaultValue": "null",
+                    "type": "Subscription",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 70
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 37
+                },
+                {
+                    "name": "onExpanded",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64
+                },
+                {
+                    "name": "onSelected",
+                    "args": [
+                        {
+                            "name": "currentValue",
+                            "type": "MatCheckboxChange"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 58,
+                    "jsdoctags": [
+                        {
+                            "name": "currentValue",
+                            "type": "MatCheckboxChange",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setup",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';\r\nimport {ContentFieldRow, ContentFieldType} from './content-field-table-item.interface';\r\nimport {ContentFieldConfig} from './content-field-table-item.config';\r\nimport {ReplaySubject, Subscription} from 'rxjs';\r\nimport {takeUntil} from 'rxjs/operators';\r\nimport {\r\n  ContentFieldRowChangeEvent,\r\n  ContentFieldRowExpandedEvent,\r\n  ContentFieldRowSelectedEvent,\r\n  mapToChangeEvent,\r\n  mapToExpandedEvent,\r\n  mapToSelectedEvent\r\n} from './content-field-table-item.events';\r\nimport {MatCheckboxChange} from '@angular/material/checkbox';\r\n\r\n@Component({\r\n  // tslint:disable-next-line:component-selector\r\n  selector: '[sb-content-field-table-item]',\r\n  templateUrl: 'content-field-table-item.component.html',\r\n  styleUrls: ['content-field-table-item.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class ContentFieldTableItemComponent implements OnInit, OnChanges, OnDestroy {\r\n  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);\r\n  private valueChangeSubscription: Subscription = null;\r\n\r\n  @Input() config: ContentFieldConfig;\r\n  @Input() dataSource: ContentFieldRow;\r\n  @Input() selected?: boolean;\r\n  @Input() expanded?: boolean;\r\n  @Output() valueChanges: EventEmitter<ContentFieldRowChangeEvent> = new EventEmitter<ContentFieldRowChangeEvent>();\r\n  @Output() rowSelected: EventEmitter<ContentFieldRowSelectedEvent> = new EventEmitter<ContentFieldRowSelectedEvent>();\r\n  @Output() rowExpanded: EventEmitter<ContentFieldRowExpandedEvent> = new EventEmitter<ContentFieldRowExpandedEvent>();\r\n\r\n  fieldTypes = {FormField: ContentFieldType.FormField, TextField: ContentFieldType.TextField};\r\n\r\n  ngOnInit(): void {\r\n    this.setup();\r\n    this.dataSource?.form?.markAllAsTouched();\r\n  }\r\n\r\n  ngOnChanges(changes: SimpleChanges): void {\r\n    if (changes.dataSource && changes.dataSource.currentValue !== changes.dataSource.previousValue) {\r\n      this.dataSource = changes.dataSource.currentValue;\r\n      this.setup();\r\n    }\r\n  }\r\n\r\n  setup(): void {\r\n    this.valueChangeSubscription?.unsubscribe();\r\n    if (this.dataSource?.form) {\r\n      this.valueChangeSubscription = this.dataSource.form.valueChanges\r\n        .pipe(takeUntil(this.destroyed$))\r\n        .subscribe(() => this.valueChanges.emit(mapToChangeEvent(this.dataSource.key, this.dataSource.form)));\r\n    }\r\n  }\r\n\r\n  onSelected(currentValue: MatCheckboxChange): void {\r\n    if (this.config?.selectable) {\r\n      this.rowSelected.emit(mapToSelectedEvent(this.dataSource.key, currentValue.checked));\r\n    }\r\n  }\r\n\r\n  onExpanded(): void {\r\n    if (this.config?.expandable) {\r\n      this.rowExpanded.emit(mapToExpandedEvent(this.dataSource.key, !this.expanded));\r\n    }\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.destroyed$.next(true);\r\n    this.destroyed$.complete();\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".form_field {\r\n  padding-top: 8px;\r\n  padding-left: 8px;\r\n  padding-right: 8px;\r\n  text-align: center;\r\n}\r\n",
+                    "styleUrl": "content-field-table-item.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "implements": [
+                "OnInit",
+                "OnChanges",
+                "OnDestroy"
+            ],
+            "templateData": "<ng-container *ngIf=\"dataSource\" [formGroup]=\"dataSource.form\">\r\n  <td class=\"form_field\" *ngIf=\"config?.selectable\">\r\n    <mat-checkbox [checked]=\"selected\" (change)=\"onSelected($event)\"></mat-checkbox>\r\n  </td>\r\n\r\n  <td class=\"form_field\" *ngFor=\"let field of dataSource.fields\">\r\n    <ng-container [ngSwitch]=\"field.type\">\r\n      <ng-container *ngSwitchCase=\"fieldTypes.FormField\">\r\n        <mat-form-field appearance=\"fill\">\r\n          <mat-label>{{field.displayLabel}}</mat-label>\r\n          <input matInput [formControlName]=\"field.key\">\r\n        </mat-form-field>\r\n      </ng-container>\r\n      <ng-container *ngSwitchCase=\"fieldTypes.TextField\">\r\n        <mat-label>{{field?.value}}</mat-label>\r\n      </ng-container>\r\n    </ng-container>\r\n  </td>\r\n\r\n  <td class=\"form_field\" *ngIf=\"config?.expandable\">\r\n    <button mat-icon-button (click)=\"onExpanded()\">\r\n        <ng-container *ngIf=\"!expanded\">\r\n          <mat-icon>expand_more</mat-icon>\r\n        </ng-container>\r\n        <ng-container *ngIf=\"expanded\">\r\n          <mat-icon>expand_less</mat-icon>\r\n        </ng-container>\r\n    </button>\r\n  </td>\r\n</ng-container>\r\n"
+        },
+        {
+            "name": "ContentFieldTableItemExpandedComponent",
+            "id": "component-ContentFieldTableItemExpandedComponent-4cef1870821690197b5d15c87a6b65ab",
+            "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item-expanded/content-field-table-item-expanded.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "[sb-content-field-table-item-expanded]",
+            "styleUrls": [
+                "content-field-table-item-expanded.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "content-field-table-item-expanded.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "colSpan",
+                    "line": 12,
+                    "type": "number"
+                },
+                {
+                    "name": "fields",
+                    "defaultValue": "[]",
+                    "line": 13,
+                    "type": "ExpandedContentField[]"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {ChangeDetectionStrategy, Component, Input} from '@angular/core';\r\nimport {ExpandedContentField} from './content-field-table-item-expanded.interface';\r\n\r\n@Component({\r\n  // tslint:disable-next-line:component-selector\r\n  selector: '[sb-content-field-table-item-expanded]',\r\n  templateUrl: 'content-field-table-item-expanded.component.html',\r\n  styleUrls: ['content-field-table-item-expanded.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class ContentFieldTableItemExpandedComponent {\r\n  @Input() colSpan: number;\r\n  @Input() fields: ExpandedContentField[] = [];\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "content-field-table-item-expanded.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<td [attr.colspan]=\"colSpan\">\r\n  <mat-grid-list cols=\"4\" rowHeight=\"100px\">\r\n    <mat-grid-tile\r\n      *ngFor=\"let field of fields\">\r\n      {{field.value()}}\r\n    </mat-grid-tile>\r\n  </mat-grid-list>\r\n<!--  <div style=\"display: flex; justify-content: space-between; width: 100%\">-->\r\n<!--    <div *ngFor=\"let field of fields\">-->\r\n<!--      <div>-->\r\n<!--        <mat-label><strong>{{field.key}}</strong></mat-label>-->\r\n<!--        <div></div>-->\r\n<!--        <mat-label>{{field.value}}</mat-label>-->\r\n<!--      </div>-->\r\n<!--      <div>-->\r\n<!--      </div>-->\r\n<!--    </div>-->\r\n<!--  </div>-->\r\n</td>\r\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "ContentFieldTableModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ContentFieldTableComponent"
+                        },
+                        {
+                            "name": "ContentFieldTableItemComponent"
+                        },
+                        {
+                            "name": "ContentFieldTableItemExpandedComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ContentFieldTableComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "config",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.stories.ts",
+                "type": "ContentFieldConfig",
+                "defaultValue": "{\r\n  selectable: false,\r\n  expandable: false,\r\n}"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/sagabook-component-lib/src/test.ts",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "dataSource",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.stories.ts",
+                "type": "ContentFieldTable",
+                "defaultValue": "{\r\n  headers: ['Player', 'Line', 'Label', 'Text'],\r\n  rows: [\r\n    {\r\n      key: '1',\r\n      selected: false,\r\n      expanded: false,\r\n      form: formGroupRow1,\r\n      fields: [\r\n        {key: 'player', value: 'Player 1', type: ContentFieldType.TextField},\r\n        {key: 'line', displayLabel: 'Line', type: ContentFieldType.FormField},\r\n        {key: 'label', displayLabel: 'Label', type: ContentFieldType.FormField},\r\n        {key: 'text', value: '1', type: ContentFieldType.TextField}\r\n      ],\r\n      expandedFields: [\r\n        {key: 'Additional Information', value: '53535'},\r\n        {key: 'Owner', value: 'Bob'},\r\n      ]\r\n    },\r\n    {\r\n      key: '2',\r\n      selected: false,\r\n      expanded: false,\r\n      form: formGroupRow2,\r\n      fields: [\r\n        {key: 'player', value: 'Player 2', type: ContentFieldType.TextField},\r\n        {key: 'line', displayLabel: 'Line', type: ContentFieldType.FormField},\r\n        {key: 'label', displayLabel: 'Label', type: ContentFieldType.FormField},\r\n        {key: 'text', value: 'lorem ipsum', type: ContentFieldType.TextField}\r\n      ],\r\n      expandedFields: [\r\n        {key: 'Additional Information', value: '13535'},\r\n        {key: 'Owner', value: 'Tim'},\r\n      ]\r\n    }\r\n  ]\r\n}"
+            },
+            {
+                "name": "formGroupRow1",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.stories.ts",
+                "type": "",
+                "defaultValue": "new FormGroup({\r\n  line: new FormControl('', [Validators.required]),\r\n  label: new FormControl('', [Validators.required])\r\n})"
+            },
+            {
+                "name": "formGroupRow2",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.stories.ts",
+                "type": "",
+                "defaultValue": "new FormGroup({\r\n  line: new FormControl('', [Validators.required]),\r\n  label: new FormControl('', [Validators.required])\r\n})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/sagabook-component-lib/src/test.ts",
+                "type": "literal type"
+            }
+        ],
+        "functions": [
+            {
+                "name": "mapToChangeEvent",
+                "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [
+                    {
+                        "name": "key"
+                    },
+                    {
+                        "name": "value",
+                        "type": "any"
+                    }
+                ],
+                "returnType": "ContentFieldRowChangeEvent",
+                "jsdoctags": [
+                    {
+                        "name": "key",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "type": "any",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "mapToExpandedEvent",
+                "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [
+                    {
+                        "name": "key"
+                    },
+                    {
+                        "name": "expanded",
+                        "type": "any"
+                    }
+                ],
+                "returnType": "ContentFieldRowExpandedEvent",
+                "jsdoctags": [
+                    {
+                        "name": "key",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "expanded",
+                        "type": "any",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "mapToSelectedEvent",
+                "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [
+                    {
+                        "name": "key"
+                    },
+                    {
+                        "name": "selected",
+                        "type": "any"
+                    }
+                ],
+                "returnType": "ContentFieldRowSelectedEvent",
+                "jsdoctags": [
+                    {
+                        "name": "key",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "selected",
+                        "type": "any",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typealiases": [
+            {
+                "name": "ReadonlyFieldType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "ContentFieldType.TextField",
+                "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.interface.ts",
+                "description": "",
+                "kind": 161
+            }
+        ],
+        "enumerations": [
+            {
+                "name": "ContentFieldType",
+                "childs": [
+                    {
+                        "name": "FormField",
+                        "value": "FormField"
+                    },
+                    {
+                        "name": "TextField",
+                        "value": "TextField"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "description": "",
+                "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.interface.ts"
+            }
+        ],
+        "groupedVariables": {
+            "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.stories.ts": [
+                {
+                    "name": "config",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.stories.ts",
+                    "type": "ContentFieldConfig",
+                    "defaultValue": "{\r\n  selectable: false,\r\n  expandable: false,\r\n}"
+                },
+                {
+                    "name": "dataSource",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.stories.ts",
+                    "type": "ContentFieldTable",
+                    "defaultValue": "{\r\n  headers: ['Player', 'Line', 'Label', 'Text'],\r\n  rows: [\r\n    {\r\n      key: '1',\r\n      selected: false,\r\n      expanded: false,\r\n      form: formGroupRow1,\r\n      fields: [\r\n        {key: 'player', value: 'Player 1', type: ContentFieldType.TextField},\r\n        {key: 'line', displayLabel: 'Line', type: ContentFieldType.FormField},\r\n        {key: 'label', displayLabel: 'Label', type: ContentFieldType.FormField},\r\n        {key: 'text', value: '1', type: ContentFieldType.TextField}\r\n      ],\r\n      expandedFields: [\r\n        {key: 'Additional Information', value: '53535'},\r\n        {key: 'Owner', value: 'Bob'},\r\n      ]\r\n    },\r\n    {\r\n      key: '2',\r\n      selected: false,\r\n      expanded: false,\r\n      form: formGroupRow2,\r\n      fields: [\r\n        {key: 'player', value: 'Player 2', type: ContentFieldType.TextField},\r\n        {key: 'line', displayLabel: 'Line', type: ContentFieldType.FormField},\r\n        {key: 'label', displayLabel: 'Label', type: ContentFieldType.FormField},\r\n        {key: 'text', value: 'lorem ipsum', type: ContentFieldType.TextField}\r\n      ],\r\n      expandedFields: [\r\n        {key: 'Additional Information', value: '13535'},\r\n        {key: 'Owner', value: 'Tim'},\r\n      ]\r\n    }\r\n  ]\r\n}"
+                },
+                {
+                    "name": "formGroupRow1",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.stories.ts",
+                    "type": "",
+                    "defaultValue": "new FormGroup({\r\n  line: new FormControl('', [Validators.required]),\r\n  label: new FormControl('', [Validators.required])\r\n})"
+                },
+                {
+                    "name": "formGroupRow2",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.stories.ts",
+                    "type": "",
+                    "defaultValue": "new FormGroup({\r\n  line: new FormControl('', [Validators.required]),\r\n  label: new FormControl('', [Validators.required])\r\n})"
+                }
+            ],
+            "projects/sagabook-component-lib/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/sagabook-component-lib/src/test.ts",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/sagabook-component-lib/src/test.ts",
+                    "type": "literal type"
+                }
+            ]
+        },
+        "groupedFunctions": {
+            "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts": [
+                {
+                    "name": "mapToChangeEvent",
+                    "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "key"
+                        },
+                        {
+                            "name": "value",
+                            "type": "any"
+                        }
+                    ],
+                    "returnType": "ContentFieldRowChangeEvent",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "mapToExpandedEvent",
+                    "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "key"
+                        },
+                        {
+                            "name": "expanded",
+                            "type": "any"
+                        }
+                    ],
+                    "returnType": "ContentFieldRowExpandedEvent",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "expanded",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "mapToSelectedEvent",
+                    "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "key"
+                        },
+                        {
+                            "name": "selected",
+                            "type": "any"
+                        }
+                    ],
+                    "returnType": "ContentFieldRowSelectedEvent",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "selected",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "groupedEnumerations": {
+            "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.interface.ts": [
+                {
+                    "name": "ContentFieldType",
+                    "childs": [
+                        {
+                            "name": "FormField",
+                            "value": "FormField"
+                        },
+                        {
+                            "name": "TextField",
+                            "value": "TextField"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "description": "",
+                    "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.interface.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {
+            "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.interface.ts": [
+                {
+                    "name": "ReadonlyFieldType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "ContentFieldType.TextField",
+                    "file": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.interface.ts",
+                    "description": "",
+                    "kind": 161
+                }
+            ]
+        }
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-format.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ContentFieldTable",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item-expanded/content-field-table-item-expanded.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ContentFieldTableItemExpandedComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item-expanded/content-field-table-item-expanded.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ExpandedContentField",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ContentFieldTableItemComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/17",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.config.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ContentFieldConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ContentFieldRowChangeEvent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ContentFieldRowExpandedEvent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ContentFieldRowSelectedEvent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "mapToChangeEvent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "mapToExpandedEvent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.events.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "mapToSelectedEvent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ContentField",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table-item/content-field-table-item.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ContentFieldRow",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ContentFieldTableComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "config",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "dataSource",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "formGroupRow1",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/lib/content-field-table/content-field-table.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "formGroupRow2",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/sagabook-component-lib/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

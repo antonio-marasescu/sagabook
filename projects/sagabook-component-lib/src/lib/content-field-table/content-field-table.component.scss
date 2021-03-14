@@ -1,0 +1,19 @@
+.field-table {
+  border-radius: 0;
+  padding: 0;
+}
+
+.field-table-header {
+  padding-left: 8px;
+  text-align: center;
+  justify-content: center;
+
+  & .header-checkbox {
+    padding-left: 12px
+  }
+}
+
+table td, table th
+{
+  padding: 0;
+}

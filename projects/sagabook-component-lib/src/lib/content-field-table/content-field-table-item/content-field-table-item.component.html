@@ -1,0 +1,30 @@
+<ng-container *ngIf="dataSource" [formGroup]="dataSource.form">
+  <td class="form_field" *ngIf="config?.selectable">
+    <mat-checkbox [checked]="selected" (change)="onSelected($event)"></mat-checkbox>
+  </td>
+
+  <td class="form_field" *ngFor="let field of dataSource.fields">
+    <ng-container [ngSwitch]="field.type">
+      <ng-container *ngSwitchCase="fieldTypes.FormField">
+        <mat-form-field appearance="fill">
+          <mat-label>{{field.displayLabel}}</mat-label>
+          <input matInput [formControlName]="field.key">
+        </mat-form-field>
+      </ng-container>
+      <ng-container *ngSwitchCase="fieldTypes.TextField">
+        <mat-label>{{field?.value}}</mat-label>
+      </ng-container>
+    </ng-container>
+  </td>
+
+  <td class="form_field" *ngIf="config?.expandable">
+    <button mat-icon-button (click)="onExpanded()">
+        <ng-container *ngIf="!expanded">
+          <mat-icon>expand_more</mat-icon>
+        </ng-container>
+        <ng-container *ngIf="expanded">
+          <mat-icon>expand_less</mat-icon>
+        </ng-container>
+    </button>
+  </td>
+</ng-container>
