@@ -1,6 +1,6 @@
 {
   "name": "sagabook-component-lib",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "author": "Antonio Marasescu-Duran",
   "peerDependencies": {
     "@angular/animations": "~11.1.0",

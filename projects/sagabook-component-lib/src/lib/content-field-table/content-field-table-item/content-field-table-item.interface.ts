@@ -1,12 +1,6 @@
 import {FormGroup} from '@angular/forms';
 import {ExpandedContentField} from '../content-field-table-item-expanded/content-field-table-item-expanded.interface';
-
-export enum ContentFieldType {
-  FormField = 'FormField',
-  TextField = 'TextField'
-}
-
-export type ReadonlyFieldType = ContentFieldType.TextField;
+import {ContentFieldType} from './content-field-types';
 
 export interface ContentField {
   key: string | number;

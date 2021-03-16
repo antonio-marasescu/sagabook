@@ -1,6 +1,6 @@
 @import '~@angular/material/theming';
 
-$edunode-byzantium: (
+$sagabook-byzantium: (
   50 : #eee5ec,
   100 : #d4bfd0,
   200 : #b894b1,
@@ -38,19 +38,19 @@ $edunode-byzantium: (
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$edunode-ui-primary: mat-palette($edunode-byzantium);
-$edunode-ui-accent: mat-palette($mat-amber, A400);
+$sagabook-ui-primary: mat-palette($sagabook-byzantium);
+$sagabook-ui-accent: mat-palette($mat-amber, A400);
 
 // The warn palette is optional (defaults to red).
-$edunode-ui-warn: mat-palette($mat-red);
+$sagabook-ui-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$edunode-ui-theme: mat-light-theme($edunode-ui-primary, $edunode-ui-accent, $edunode-ui-warn);
+$sagabook-ui-theme: mat-light-theme($sagabook-ui-primary, $sagabook-ui-accent, $sagabook-ui-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($edunode-ui-theme);
+@include angular-material-theme($sagabook-ui-theme);
 
 /* You can add global styles to this file, and also import other style files */
 

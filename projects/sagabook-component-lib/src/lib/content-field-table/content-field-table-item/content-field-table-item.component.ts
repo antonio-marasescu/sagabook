@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
-import {ContentFieldRow, ContentFieldType} from './content-field-table-item.interface';
+import {ContentFieldRow} from './content-field-table-item.interface';
 import {ReplaySubject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {
@@ -12,6 +12,7 @@ import {
 } from './content-field-table-item.events';
 import {MatCheckboxChange} from '@angular/material/checkbox';
 import {ContentFieldConfig} from './content-field-table-item.config';
+import {ContentFieldType} from './content-field-types';
 
 @Component({
   // tslint:disable-next-line:component-selector

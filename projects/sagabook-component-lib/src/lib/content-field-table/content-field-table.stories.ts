@@ -4,8 +4,8 @@ import {object, withKnobs} from '@storybook/addon-knobs';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ContentFieldConfig} from './content-field-table-item/content-field-table-item.config';
 import {ContentFieldTable} from './content-field-table-format.interface';
-import {ContentFieldType} from './content-field-table-item/content-field-table-item.interface';
 import {withConsole} from '@storybook/addon-console';
+import {ContentFieldType} from './content-field-table-item/content-field-types';
 
 const formGroupRow1 = new FormGroup({
   line: new FormControl('', [Validators.required]),

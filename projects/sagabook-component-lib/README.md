@@ -1,24 +1,57 @@
-# ComponentLib
+# Sagabook UI Component Library
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
+Sagabook is a library of component using Angular Material for various use cases.
 
-## Code scaffolding
+## Content Field Table
 
-Run `ng generate component component-name --project component-lib` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project component-lib`.
-> Note: Don't forget to add `--project component-lib` or else it will be added to the default project in your `angular.json` file. 
+A component for handling displaying and editing data inside a table.
 
-## Build
+Please checkout the storybook at https://github.com/antonio-marasescu/sagabook-ui
 
-Run `ng build component-lib` to build the project. The build artifacts will be stored in the `dist/` directory.
+### How to use
 
-## Publishing
+- install it using `npm i sagabook-component-lib`
+- import the `ContentFieldTableModule` in your module
+- add the component to your html using `<sb-content-field-table></sb-content-field-table>`
+- Fill out the `dataSource` and `config` inputs
 
-After building your library with `ng build component-lib`, go to the dist folder `cd dist/component-lib` and run `npm publish`.
+### @Input dataSource: ContentFieldTable
+Specifies the input used to render the form fields and readonly data inside the table
+#### Table definition
+    export interface ContentFieldTable {
+      headers: string[]; // the headers of the tables
+      rows: ContentFieldRow[]; // the definition of a row of the table
+    }
 
-## Running unit tests
+#### Row definition
+    export interface ContentFieldRow {
+      key: string; // unique identifier of the row
+      selected?: boolean; // if row will be selectable
+      expanded?: boolean; // if row will be expandable
+      form: FormGroup;  // the form using editable the fields keys
+      fields: ContentField[]; // the normal row header fields definition
+      expandedFields?: ExpandedContentField[]; // the exapanded fields definition
+    }
 
-Run `ng test component-lib` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Content Field definition
 
-## Further help
+    export interface ContentField {
+      key: string | number; // the unique key of the field
+      displayLabel?: string; // the label displayed if the field is a form control
+      value?: any; // value for non-form fields
+      type: ContentFieldType; // TextField or FormField
+    }
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+#### Expanded Content Field definition
+
+    export interface ExpandedContentField {
+      key: string | number; // the unique key of the field
+      value?: any; // the value displayed
+    }
+
+### @Input config: ContentFieldConfig
+
+    export interface ContentFieldConfig {
+      selectable: boolean; // is the table using selectable rows
+      expandable: boolean; // is the table using expandable rows
+    }
